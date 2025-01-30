@@ -1,0 +1,6 @@
+include/splinart/spline.hpp:30:21: style: Variable 'unused' is assigned a value that is never used. [unreadVariable]
+        auto unused = 4;
+                    ^
+examples/circle.cpp:14:1: error: syntax error [syntaxError]
+intmain(intargc, char* argv[])
+^
