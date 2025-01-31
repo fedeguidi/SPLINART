@@ -12,7 +12,7 @@ jobs:
     - uses: pre-commit/action@v3.0.1
 
   tests:
-    needs: pre-commit
+    needs: [pre-commit, cppcheck]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -21,22 +21,6 @@ jobs:
           pixi-version: v0.40.2
           cache: true
       - run: pixi run test
-
-  python_tests:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [ubuntu-latest, macos-latest]
-        py-version:
-          - "3.10"
-          - 3.11
-          - 3.12
-
-    steps:
-      - name: Set up Python ${{ matrix.py-version }}
-        uses: actions/setup-python@v2
-        with:
-          python-version: ${{ matrix.py-version }}
 
   cppcheck:
     runs-on: ubuntu-latest
