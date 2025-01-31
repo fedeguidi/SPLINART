@@ -12,7 +12,7 @@ jobs:
     - uses: pre-commit/action@v3.0.1
 
   tests:
-    needs: pre-commit
+    needs: [pre-commit, cppcheck]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
